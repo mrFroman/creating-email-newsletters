@@ -1,0 +1,22 @@
+
+{% load static %}
+
+<!doctype html><html><head><meta charset="utf-8">
+
+<title>{% block title %}{{ title }}{% endblock title %}</title>
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<script defer="defer" src="{% static 'main/js/new_date.js' %}"></script>
+
+<link href="{% static 'main/css/new_date.css' %}" rel="stylesheet">
+</head>
+<body>
+<div>
+    <!-- это как напоминалка что возвращается в json, потом можно ее убрать -->
+    {{ date_poster }}
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}{{ title }}{% endblock title %}
+
+{% block section %}
+{% endblock section %}
+
+{% block content %}
+
+<div class="container px-4 py-5" id="hanging-icons">
+  <h2 class="pb-2 border-bottom">Выбор ссылок</h2>
+
+
+    <div class="album py-5">
+        <div class="container d-flex flex-column align-items-center justify-content-center">
+            <form action="" class="d-flex flex-column mb-3" id="form-container" enctype="multipart/form-data" method="post">
+               {% csrf_token %}
+                {{ formset_poster.management_form }}
+                    {% for f in formset_poster %}
+                        <div class="banner-form">
+                            <p id="banner-row">{{ f }}</p>
+                        </div>
+                        <button class="btn btn-outline-info btn-sm mb-2" id="add-banner" type="button">Добавить баннер</button>
+                        <button class="btn btn-outline-danger btn-sm mb-3" id="removeBanner" type="button">удалить баннер</button>
+                    {% endfor %}
+                <button class="btn btn-primary align-items-center" type="submit">Передать данные</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="{% static 'main/js/poster_formset.js' %}"></script>
+{% endblock content %}
+

@@ -15,6 +15,8 @@
         <div class="container d-flex flex-column align-items-center justify-content-center">
             <form action="" class="d-flex flex-column mb-3" id="form-container" enctype="multipart/form-data" method="post">
                {% csrf_token %}
+               <div id="showCount">
+                </div>
                 {{ formset_poster.management_form }}
                     {% for f in formset_poster %}
                         <div class="banner-form">

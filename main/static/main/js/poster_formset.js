@@ -15,8 +15,10 @@ function addFormBanner(e){
     newForm.innerHTML = newForm.innerHTML.replace(bannerRegex, `form-${bannerNum}-`)
     container.insertBefore(newForm, addBanner)
     totalFormsBanner.setAttribute('value', `${bannerNum+1}`)
+    let divData=document.getElementById("showCount")
+    divData.innerHTML="Количество афиш: "+ totalFormsBanner.getAttribute('value') +""
 
-    if (bannerNum === 2){
+    if (bannerNum === 14){
         addBanner.setAttribute('disabled', true)
     }
 }
@@ -30,8 +32,10 @@ function deleteBanner(e){
     let lastForm = Array.from(document.querySelectorAll('.banner-form'))
     let delEl = lastForm.pop()
     delEl.remove()
+    let divData=document.getElementById("showCount");
+    divData.innerHTML="Количество афиш: "+ totalFormsBanner.getAttribute('value') +""
 
-    if (bannerNum != 2){
+    if (bannerNum != 14){
         addBanner.removeAttribute('disabled', true)
     }
 }

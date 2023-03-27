@@ -5,9 +5,13 @@ from django.forms import formset_factory
 from django.shortcuts import reverse, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, TemplateView
+from rest_framework import generics
+from rest_framework.views import APIView
+
 from .models import Mainindex
 from .form import LoginUserForm, RegisterUserForm, UrlsForDate
 from .services import created_mailing_list
+from .serializers import UrlSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -77,12 +81,16 @@ class CreateMail(TemplateView):
 
         self.date_poster = created_mailing_list()
 
-        context = {
-            'title': 'Редактрование афиши',
-            'date_poster': self.date_poster
-        }
+        context = {'title': 'Редактрование афиши',
+                   'date_poster': json.dumps(self.date_poster)
+                   }
 
         return self.render_to_response(context)
+
+
+class CreateMailApi(APIView):
+    serializer_class = UrlSerializer
+
 
 
 

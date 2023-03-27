@@ -1,1 +1,178 @@
-body{padding:0;margin:0;box-sizing:border-box}#app{display:flex}#app .template{width:70%;height:100%;display:flex;align-items:center;justify-content:center}#app .template #root{max-width:600px;width:100%;background-color:#fff;text-align:center;padding:15px;border:1px gray solid;display:flex;flex-wrap:wrap;align-items:center}#app .template #root #header,#app .template #root #footer{background-color:#ff0;text-align:center;padding:20px 0;width:100%}#app .template #root div[id^=top_]{width:100%;height:300px;background-color:purple;margin:10px 0;display:flex}#app .template #root div[id^=poster_]{display:inline-flex;width:30%;min-height:200px;background-color:green;margin:10px}#app .template #root div{border-radius:5px;align-items:center;justify-content:center;flex-direction:column}#app .template #root .card{margin:0;padding:0;border:none}#app .template #root .card h2{margin:0}#app .event__list{width:30%;height:100%;position:fixed;top:0;right:0;border-left:2px gray solid;padding:0 15px;overflow:auto}#app .event__list .card{border:2px gray solid;border-radius:5px;margin:10px 0;padding:10px}#app .event__list .card.selected{background-color:#fff;opacity:.4}
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, Geneva, sans-serif;
+}
+
+#app {
+    display: flex
+}
+
+#app .template {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+#app .template #root {
+    max-width: 600px;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    padding: 15px;
+    border: 1px gray solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#app .template #root .description {
+    font-size: 14px;
+    border: 1px grey dashed;
+    margin: 0 auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+    word-wrap: normal
+}
+
+#app .template #root #header,
+#app .template #root #footer {
+    background-color: #ff0;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%
+}
+
+#app .template #root div[id^=top_] {
+    width: 100%;
+    min-height: 300px;
+    margin: 10px 0;
+}
+
+#app .template #root div[id^=top_] .top__date {
+    margin: 20px;
+}
+
+#app .template #root div[id^=top_] img {
+    width: 600px;
+    height: 300px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+#app .template #root div[id^=top_] a {
+    display: inline-block;
+    background: #8e4adf;
+    color: #fff;
+    border-radius: 50px;
+    padding: 15px 35px;
+    font-size: 18px;
+}
+
+#app .template #root div[id=top_2],
+#app .template #root div[id=top_3] {
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+#app .template #root div[id^=poster_] {
+    width: 178px;
+    min-height: 200px;
+    border: 1px solid grey;
+}
+
+#app .template #root div[id^=poster_] .poster__img {
+    display: block;
+    min-height: 233px;
+    width: 100%;
+    border-bottom: 1px solid grey;
+}
+
+#app .template #root div[id^=poster_] .poster__body {
+    padding: 11px 10px;
+    font-size: 14px;
+    text-align: left;
+}
+
+#app .template #root div[id^=poster_] .poster__title {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+#app .template #root div[id^=poster_] .poster__date {
+    font-weight: bold;
+}
+
+#app .template #root div[id^=poster_] .poster__time {
+    color: #868686;
+}
+
+#app .template #root div[id^=poster_] .poster__rate {
+    background-color: #bebebe;
+    padding: 1px 2px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 10px;
+    vertical-align: middle;
+}
+
+#app .template #root div[id^=poster_] .poster__venue {
+    margin: 10px 0;
+}
+
+#app .template #root div[id^=poster_] .poster__price {
+    background-color: #8e4adf;
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 32px;
+    text-align: center;
+    width: 148px;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+#app .template #root div {
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column
+}
+
+#app .template #root .card {
+    margin: 0;
+    padding: 0;
+    border: none
+}
+
+#app .template #root .card h2 {
+    margin: 0
+}
+
+#app .event__list {
+    width: 30%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    border-left: 2px gray solid;
+    padding: 0 15px;
+    overflow: auto
+}
+
+#app .event__list .card {
+    border: 2px gray solid;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px
+}
+
+#app .event__list .card.selected {
+    background-color: #fff;
+    opacity: .4
+}

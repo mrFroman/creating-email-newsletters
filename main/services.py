@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
 
+
 ''' парсер для считывания данных с сайта kassy.ru '''
 def created_mailing_list():
     ticket_dates = []
@@ -23,6 +24,7 @@ def created_mailing_list():
         url = value.pop('poster_url')
 
         req = requests.get(url, headers=headers)
+
         with open('parser.html', 'w', encoding='utf-8') as file:
             file.write(req.text)
 
@@ -53,6 +55,11 @@ def created_mailing_list():
         except Exception:
             price = 'не нашли цену'
 
+        try:
+            content_text = soup.find(class_='content').find('div', class_=None).get_text()
+        except Exception:
+            content_text = 'Описания мероприятия нет, запрашивайте у организатора'
+
         urls_data = {
             'poster_url': url,
             'name_event': name_event,
@@ -61,11 +68,14 @@ def created_mailing_list():
             'time_event': time_event,
             'venue': venue,
             'price': price,
+            'content_text': content_text
         }
+
+        print(content_text)
 
         ticket_dates.append(urls_data)
 
-    with open('json_content.json', 'w', encoding='utf8') as file:
+    with open('json_content.json', 'w', encoding='utf8') as file:     # 'static/main/js/json_content.js'
         json.dump(ticket_dates, file, indent=4)
 
     return ticket_dates
@@ -97,4 +107,6 @@ def unpuck_all(context):
             else:
                 context[key] = value
     return context
+
+
 

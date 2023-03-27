@@ -1,7 +1,7 @@
-
 {% load static %}
+<!doctype html>
 
-<!doctype html><html><head><meta charset="utf-8">
+<html><head><meta charset="utf-8">
 
 <title>{% block title %}{{ title }}{% endblock title %}</title>
 
@@ -14,7 +14,8 @@
 <body>
 <div>
     <!-- это как напоминалка что возвращается в json, потом можно ее убрать -->
-    {{ date_poster }}
+    <div style="display: none" id="jsonData" data-json="{{ date_poster }}"></div>
+
 </div>
 
 

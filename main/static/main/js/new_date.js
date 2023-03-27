@@ -37,16 +37,24 @@
       let rate = document.createElement('span')
       let place = document.createElement('div')
       let button = document.createElement('a')
+      let inputImg = document.createElement('input')
+      let wrapImg = document.createElement('div')
 
+      div.classList.add('root__card')
       posterBody.classList.add('poster__body')
       title.setAttribute('contenteditable', 'true')
       description.setAttribute('contenteditable', 'true')
       description.classList.add('description')
+      inputImg.type = 'file'
+      inputImg.style.display = 'none'
+      wrapImg.classList.add('img__wrap')
+
+      wrapImg.append(img)
 
       if (i === 0) {
         div.id = `top_1`;
         topdate.classList.add('top__date')
-        div.append(img, description, topdate, button)
+        div.append(wrapImg, inputImg, description, topdate, button)
       }
       else if (i < 7 && i !== 7 && i !== 0) {
         div.id = `poster_${i}`
@@ -59,7 +67,7 @@
         place.classList.add('poster__venue')
         button.classList.add('poster__price')
         posterBody.append(title, date, time, rate, place, button)
-        div.append(img, posterBody)
+        div.append(wrapImg, posterBody)
       }
       else if (i === 7) div.id = `top_2`;
       else if (i > 7 && i !== 7 && i !== 14) {
@@ -73,7 +81,7 @@
         place.classList.add('poster__venue')
         button.classList.add('poster__price')
         posterBody.append(title, date, time, rate, place, button)
-        div.append(img, posterBody)
+        div.append(wrapImg, posterBody)
       }
       else if (i === 14) div.id = `top_3`;
 
@@ -93,11 +101,21 @@
           rate.textContent = `${data.rate}`
           place.textContent = `${data.venue}`
         } else {
-          description.textContent = `Напишите описание`
+          description.textContent = `${data.content_text}`
           button.textContent = 'Выбрать место'
           topdate.textContent = `${data.date_event} в ${data.time_event} ${data.venue}`
         }
       });
+
+      wrapImg.addEventListener('click', () => {
+        inputImg.click()
+        inputImg.addEventListener('change', () => {
+          console.log(URL.createObjectURL(inputImg.files[0]))
+  
+          img.src = URL.createObjectURL(inputImg.files[0])
+      })
+      
+      })
 
       root.append(div);
     }

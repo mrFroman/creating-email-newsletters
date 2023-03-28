@@ -71,8 +71,7 @@ def created_mailing_list():
             'content_text': content_text
         }
 
-        print(content_text)
-
+        ticket_dates.append(urls_data)
 
     with open('json_content.json', 'w', encoding='utf8') as file:     # 'static/main/js/json_content.js'
         json.dump(ticket_dates, file, indent=4)

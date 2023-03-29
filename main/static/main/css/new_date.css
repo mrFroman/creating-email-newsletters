@@ -1,68 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+*[contenteditable="true"] {
+    border: 1px #a7a7a7 dashed;
+    padding: 2px 5px;
+    border-radius: 6px;
+}
+
 body {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
     font-family: Helvetica, Geneva, sans-serif;
+    color: #292929;
 }
 
 #app {
     display: flex
 }
 
-#app .template {
+#app #template {
     width: 70%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    background-color: #f7f7f7;
 }
 
-#app .template #root {
+#app #template #header {
+    height: 118px;
+}
+
+#app #template #root {
     max-width: 600px;
     width: 100%;
     background-color: #fff;
     text-align: center;
     padding: 15px;
-    border: 1px gray solid;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px;
 }
 
-#app .template #root .description {
-    font-size: 14px;
-    border: 1px grey dashed;
-    margin: 0 auto;
-    padding: 5px 10px;
-    border-radius: 5px;
-    word-wrap: normal
+#app #template #root .root__title {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+    color: #000;
+    line-height: 17px;
+    margin: 50px auto;
 }
 
-#app .template #root #header,
-#app .template #root #footer {
-    background-color: #ff0;
-    text-align: center;
-    padding: 20px 0;
-    width: 100%
+#app #template #root .top .img__wrap {
+    position: relative;
+    width: 570px;
+    height: 285px;
+    margin-bottom: 30px;
 }
 
-#app .template #root .img__wrap {
+#app #template #root div[id^=poster] .img__wrap {
     position: relative;
 }
 
-#app .template #root .img__wrap:hover {
+#app #template #root .img__wrap:hover {
     cursor: pointer;
 }
 
-#app .template #root .img__wrap:hover:after {
+#app #template #root .img__wrap:hover:after {
     content: '+';
     font-size: 40px;
-    color: #A9A9A9;
-    border: 2px solid #A9A9A9;
+    color: #fff;
+    background-color: #8e4adf;
     border-radius: 50%;
     font-weight: light;
-    padding: 0 20px;
+    padding: 0 15px;
     display: block;
     position: absolute;
     margin: 0 auto;
@@ -71,76 +83,117 @@ body {
     transform: translate(-50%, -50%);
 }
 
-#app .template #root img {
-    background-color: transparent
+#app #template #root .img__wrap:hover:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, .4);
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
-#app .template #root div[id^=top_] {
-    width: 100%;
-    min-height: 300px;
+#app #template #root .top__description {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Tahoma, Geneva, sans-serif;
+    margin: 0 auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+    word-wrap: normal
+}
+
+#app #template #root div[id^=top_] {
+    width: 570px;
+    min-height: 285px;
     margin: 10px 0;
 }
 
-#app .template #root div[id^=top_] .top__date {
-    margin: 20px;
+#app #template #root div[id^=top_] .top__date {
+    margin: 30px;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: Tahoma, Geneva, sans-serif;
 }
 
-#app .template #root div[id^=top_] img {
-    width: 600px;
-    height: 300px;
-    border: 1px solid grey;
+#app #template #root div[id^=top_] .top__event-venue {
+    display: inline-block;
+}
+
+#app #template #root div[id^=top_] img {
+    width: 100%;
+    height: 100%;
+    background-color: #d9d9d9;
     border-radius: 5px;
+    margin-bottom: 30px;
 }
 
-#app .template #root div[id^=top_] a {
+#app #template #root div[id^=top_] a {
+    margin: 0px auto 20px;
     display: inline-block;
     background: #8e4adf;
     color: #fff;
     border-radius: 50px;
-    padding: 15px 35px;
+    padding-top: 13px;
+    padding-bottom: 14px;
+    padding-right: 35px;
+    padding-left: 35px;
     font-size: 18px;
+    line-height: 15px;
 }
 
-#app .template #root div[id=top_2],
-#app .template #root div[id=top_3] {
-    border: 1px solid grey;
-    border-radius: 5px;
-}
-
-#app .template #root div[id^=poster_] {
+#app #template #root div[id^=poster_] {
     width: 178px;
     min-height: 200px;
-    border: 1px solid grey;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: 0 1px 6px #ccc;
+    border: 1px solid #ddd;
+    overflow: hidden;
 }
 
-#app .template #root div[id^=poster_] .poster__img {
+#app #template #root div[id^=poster_] .poster__img {
     display: block;
-    min-height: 233px;
+    min-height: 250px;
     width: 100%;
-    border-bottom: 1px solid grey;
+    background-color: #d9d9d9;
 }
 
-#app .template #root div[id^=poster_] .poster__body {
+#app #template #root div[id^=poster_] .poster__body {
     padding: 11px 10px;
     font-size: 14px;
     text-align: left;
 }
 
-#app .template #root div[id^=poster_] .poster__title {
+#app #template #root div[id^=poster_] .poster__category {
+    font-size: 12px;
+    line-height: 15px;
+    color: #de39a2;
+    font-weight: normal;
+    height: 20px;
+}
+
+#app #template #root div[id^=poster_] .poster__title {
     font-weight: bold;
     font-size: 14px;
-    margin: 10px 0;
+    margin: 10px 0 20px;
+    height: 60px;
+    max-height: 60px;
 }
 
-#app .template #root div[id^=poster_] .poster__date {
+#app #template #root div[id^=poster_] .poster__date {
     font-weight: bold;
 }
 
-#app .template #root div[id^=poster_] .poster__time {
+#app #template #root div[id^=poster_] .poster__time {
     color: #868686;
 }
 
-#app .template #root div[id^=poster_] .poster__rate {
+#app #template #root div[id^=poster_] .poster__rate {
     background-color: #bebebe;
     padding: 1px 2px;
     border-radius: 2px;
@@ -149,11 +202,13 @@ body {
     vertical-align: middle;
 }
 
-#app .template #root div[id^=poster_] .poster__venue {
+#app #template #root div[id^=poster_] .poster__venue {
     margin: 10px 0;
+    height: 40px;
+    max-height: 40px;
 }
 
-#app .template #root div[id^=poster_] .poster__price {
+#app #template #root div[id^=poster_] .poster__price {
     background-color: #8e4adf;
     border-radius: 50px;
     color: #ffffff;
@@ -161,28 +216,32 @@ body {
     line-height: 32px;
     text-align: center;
     width: 148px;
-    display: inline-block;
-    margin: 0 auto;
+    display: block;
+    margin: 10px auto;
+    height: 32px;
 }
 
-#app .template #root .root__card {
-    border-radius: 5px;
+#app #template #root div {
     align-items: center;
     justify-content: center;
     flex-direction: column
 }
 
-#app .template #root .card {
+#app #template #root .card {
     margin: 0;
     padding: 0;
     border: none
 }
 
-#app .template #root .card h2 {
+#app #template #root .card h2 {
     margin: 0
 }
 
-#app .event__list {
+#app #footer {
+    height: 297px;
+}
+
+#app #event__list {
     width: 30%;
     height: 100%;
     position: fixed;
@@ -193,14 +252,14 @@ body {
     overflow: auto
 }
 
-#app .event__list .card {
+#app #event__list .card {
     border: 2px gray solid;
     border-radius: 5px;
     margin: 10px 0;
     padding: 10px
 }
 
-#app .event__list .card.selected {
+#app #event__list .card.selected {
     background-color: #fff;
     opacity: .4
 }

@@ -35,7 +35,7 @@ function deleteBanner(e){
     let divData=document.getElementById("showCount");
     divData.innerHTML="Количество афиш: "+ totalFormsBanner.getAttribute('value') +""
 
-    if (bannerNum != 14){
+    if (bannerNum !== 14){
         addBanner.removeAttribute('disabled', true)
     }
 }

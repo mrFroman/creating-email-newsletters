@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'template_bs',
         'USER': 'root',
         'PASSWORD': 'DfyLthCfhyjvth1',
-        'HOST': '127.0.0.1',
+        'HOST': 'mysql',
         'PORT': '3306',
     }
 }

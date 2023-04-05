@@ -85,7 +85,7 @@ class CreateMail(TemplateView):
         return self.render_to_response(context)
 
 
-
+''' чтоб изменения в гит подлетели '''
 
 
 

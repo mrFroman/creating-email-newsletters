@@ -48,3 +48,26 @@ class Mainindex(models.Model):
     class Meta:
         verbose_name = 'Главная'
         verbose_name_plural = 'Главная страница'
+
+
+class UrlsContent(models.Model):
+    poster_url = models.ForeignKey('UrlsPoster', on_delete=models.PROTECT, null=True)
+    name_event = models.CharField('Название мероприятия', max_length=100)
+    rate = models.CharField('Возрастной ценз', max_length=4)
+    date_event = models.CharField('Дата мероприятия', max_length=20)
+    time_event = models.CharField('Время мероприятия', max_length=20)
+    venue = models.CharField('Место проведения', max_length=50)
+    price = models.CharField('Цена', max_length=20)
+    content_text = models.TextField('Описание мероприятия', max_length=300)
+
+    def __str__(self):
+        return self.poster_url, self.name_event, self.rate, self.date_event, self.time_event, self.venue, self.price, \
+               self.content_text
+
+
+class UrlsPoster(models.Model):
+    poster_url = models.URLField('Ссылка на мероприятие', max_length=60)
+
+    def __str__(self):
+        return self.poster_url
+

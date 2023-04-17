@@ -11,6 +11,7 @@ urlpatterns = [
         path('logout', views.LogoutUser.as_view(), name='logout'),
         path('register', views.RegisterUser.as_view(), name='register'),
         path('new_date', views.CreateMail.as_view(), name='new_date'),
+        path('api/v1/urllist/', views.UrlAPIViews.as_view())
 
 ]
 

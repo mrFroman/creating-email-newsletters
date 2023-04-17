@@ -4,6 +4,7 @@ import json
 import requests
 from bs4 import BeautifulSoup
 
+from main.models import UrlsContent, UrlsPoster
 
 logger = logging.getLogger(__name__)
 
@@ -60,8 +61,12 @@ def created_mailing_list():
         except Exception:
             content_text = 'Описания мероприятия нет, запрашивайте у организатора'
 
-        urls_data = {
+        poster = {
             'poster_url': url,
+        }
+
+        urls_data = {
+            #'poster_url': url,
             'name_event': name_event,
             'rate': rate,
             'date_event': date_event,
@@ -72,6 +77,10 @@ def created_mailing_list():
         }
 
         ticket_dates.append(urls_data)
+
+        UrlsPoster.objects.create(**poster)
+        UrlsContent.objects.create(**urls_data)
+
 
     with open('json_content.json', 'w', encoding='utf8') as file:     # 'static/main/js/json_content.js'
         json.dump(ticket_dates, file, indent=4)

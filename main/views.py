@@ -5,10 +5,12 @@ from django.forms import formset_factory
 from django.shortcuts import reverse, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, TemplateView
-from .models import Mainindex
+from .models import Mainindex, UrlsContent
 from .form import LoginUserForm, RegisterUserForm, UrlsForDate
 from .services import created_mailing_list
+from rest_framework import generics
 
+from .serializers import UrlSerializer, ContentSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -85,8 +87,9 @@ class CreateMail(TemplateView):
         return self.render_to_response(context)
 
 
-''' чтоб изменения в гит подлетели '''
-
+class UrlAPIViews(generics.ListCreateAPIView):
+    queryset = UrlsContent.objects.all()  #  + UrlSerializer.objects.all()
+    serializer_class = ContentSerializer  # UrlSerializer
 
 
 

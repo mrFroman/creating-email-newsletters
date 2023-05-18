@@ -11,5 +11,8 @@ mysql --user=root --password=DfyLthCfhyjvth1 --database=template_bs --force < /t
 mysql --user=root --password=DfyLthCfhyjvth1 --database=template_bs --force < /tmp/dump/data_bases_main_mainindex.sql
 mysql --user=root --password=DfyLthCfhyjvth1 --database=template_bs --force < /tmp/dump/data_bases_main_user.sql
 mysql --user=root --password=DfyLthCfhyjvth1 --database=template_bs --force < /tmp/dump/data_bases_main_user_groups.sql
-mysql --user=root --password=DfyLthCfhyjvth1 --database=template_bs --force < /tmp/dump/data_bases_main_UrlsContent.sql
-mysql --user=root --password=DfyLthCfhyjvth1 --database=template_bs --force < /tmp/dump/data_bases_main_UrlsPoster.sql
+mysql --user=root --password=DfyLthCfhyjvth1 --database=template_bs --force < /tmp/dump/data_bases_main_urlscontent.sql
+mysql --user=root --password=DfyLthCfhyjvth1 --database=template_bs --force < /tmp/dump/data_bases_main_citymailsend.sql
+mysql --user=root --password=DfyLthCfhyjvth1 --database=template_bs --force < /tmp/dump/data_bases_main_datemailsend.sql
+mysql --user=root --password=DfyLthCfhyjvth1 --database=template_bs --force < /tmp/dump/data_bases_main_mainindex.sql
+

@@ -71,6 +71,3 @@ class UrlsForDate(forms.Form):
     poster_url = forms.URLField(max_length=100, label='Url афиши', required=True)
 
 
-class DateOfPoster:
-    pass
-

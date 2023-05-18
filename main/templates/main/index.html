@@ -1,47 +1,15 @@
-{% extends 'main/base.html' %}
 {% load static %}
-{% block title %}{{ title }}{% endblock title %}
-
-{% block section %}
-{% endblock section %}
-
-{% block content %}
-
-<div class="container px-4 py-5" id="hanging-icons">
-  <h2 class="pb-2 border-bottom">Выбор ссылок</h2>
-  <p>Типы рассылок:</p>
-  <ul>
-    <li>1, 2 или 3 топа</li>
-    <li>1 топ 3 афиши</li>
-    <li>1 топ 6 афиш</li>
-    <li>2 топа 3 афиши</li>
-    <li>2 топа 6 афиш</li>
-    <li>2 топа 9 афиш</li>
-    <li>2 топа 12 афиш</li>
-    <li>3 топа 9 афиш</li>
-    <li>3 топа 12 афиш</li>
-  </ul>
+<!doctype html><html>
+<head>
+    <meta charset="utf-8">
+    <title>Шаблонизатор</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script defer="defer" src="{% static 'main/js/96d910d518f225df091d.js' %}"></script>
+    <link href="{% static 'main/css/cf382795d2dcb90a5062.css' %}" rel="stylesheet">
+</head>
+<body>
 
 
-    <div class="album py-5">
-        <div class="container d-flex flex-column align-items-center justify-content-center">
-            <form action="" class="d-flex flex-column mb-3" id="form-container" enctype="multipart/form-data" method="post">
-               {% csrf_token %}
-               <div id="showCount">
-                </div>
-                {{ formset_poster.management_form }}
-                    {% for f in formset_poster %}
-                        <div class="banner-form">
-                            <p id="banner-row">{{ f }}</p>
-                        </div>
-                        <button class="btn btn-outline-info btn-sm mb-2" id="add-banner" type="button">Добавить баннер</button>
-                        <button class="btn btn-outline-danger btn-sm mb-3" id="removeBanner" type="button">удалить баннер</button>
-                    {% endfor %}
-                <button class="btn btn-primary align-items-center" type="submit">Передать данные</button>
-            </form>
-        </div>
-    </div>
-</div>
-<script src="{% static 'main/js/poster_formset.js' %}"></script>
-{% endblock content %}
+</body>
 
+</html>

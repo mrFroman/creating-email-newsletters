@@ -5,8 +5,6 @@ from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 
 ''' модели для создания пользователя и входа '''
-
-
 class UserManager(BaseUserManager):
     def _create_user(self, email, password, **extra_fields):
         if not email:
@@ -37,10 +35,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     objects = UserManager()
 
-
-''' модель для главной страницы '''
-
-
 class Mainindex(models.Model):
     get_user_model()
     title = models.CharField('Название', max_length=50)
@@ -50,8 +44,26 @@ class Mainindex(models.Model):
         verbose_name_plural = 'Главная страница'
 
 
+class CityMailSend(models.Model):
+    city = models.CharField('Город', max_length=60)
+    user_created = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.city
+
+
+class DateMailSend(models.Model):
+    city = models.ForeignKey(CityMailSend, on_delete=models.CASCADE)
+    user_created = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_create = models.DateTimeField(auto_now_add=True)
+
+
+
+''' модель со ссылками '''
 class UrlsContent(models.Model):
-    poster_url = models.ForeignKey('UrlsPoster', on_delete=models.PROTECT, null=True)
+    date_create = models.ForeignKey(DateMailSend, on_delete=models.CASCADE, null=False)
+    user_created = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    poster_url = models.URLField('Ссылка на мероприятие', max_length=60)
     name_event = models.CharField('Название мероприятия', max_length=100)
     rate = models.CharField('Возрастной ценз', max_length=4)
     date_event = models.CharField('Дата мероприятия', max_length=20)
@@ -61,13 +73,9 @@ class UrlsContent(models.Model):
     content_text = models.TextField('Описание мероприятия', max_length=300)
 
     def __str__(self):
-        return self.poster_url, self.name_event, self.rate, self.date_event, self.time_event, self.venue, self.price, \
-               self.content_text
+        return self.name_event
 
 
-class UrlsPoster(models.Model):
-    poster_url = models.URLField('Ссылка на мероприятие', max_length=60)
 
-    def __str__(self):
-        return self.poster_url
+
 

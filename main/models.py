@@ -46,23 +46,20 @@ class Mainindex(models.Model):
 
 class CityMailSend(models.Model):
     city = models.CharField('Город', max_length=60)
-    user_created = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.city
 
 
 class DateMailSend(models.Model):
-    city = models.ForeignKey(CityMailSend, on_delete=models.CASCADE)
-    user_created = models.ForeignKey(User, on_delete=models.CASCADE)
+    city = models.ForeignKey(CityMailSend,  on_delete=models.CASCADE, related_name='city_select')
+    user_created = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
     date_create = models.DateTimeField(auto_now_add=True)
-
 
 
 ''' модель со ссылками '''
 class UrlsContent(models.Model):
-    date_create = models.ForeignKey(DateMailSend, on_delete=models.CASCADE, null=False)
-    user_created = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    date_create = models.ForeignKey(DateMailSend, on_delete=models.CASCADE, null=False, related_name='data')
     poster_url = models.URLField('Ссылка на мероприятие', max_length=60)
     name_event = models.CharField('Название мероприятия', max_length=100)
     rate = models.CharField('Возрастной ценз', max_length=4)
@@ -72,8 +69,12 @@ class UrlsContent(models.Model):
     price = models.CharField('Цена', max_length=20)
     content_text = models.TextField('Описание мероприятия', max_length=300)
 
+
     def __str__(self):
         return self.name_event
+
+
+
 
 
 

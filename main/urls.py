@@ -1,20 +1,20 @@
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
 
 from . import views
 
 app_name = 'main'
+
 urlpatterns = [
         path('index', views.Index.as_view(), name='index'),
         path('login', views.LoginUser.as_view(), name='login'),
         path('logout', views.LogoutUser.as_view(), name='logout'),
         path('register', views.RegisterUser.as_view(), name='register'),
         path('', views.CreateMail.as_view(), name='new_date'),
-        path('api/v1/urllist/', views.UrlAPIViews.as_view()),
-        path('api/v1/citylist/', views.CityAPIViews.as_view()),
-        path('api/v1/userlist/', views.UserAPIViews.as_view()),
-        path('api/v1/datelist/', views.DateAPIViews.as_view()),
+
+        path('api/', include('main.api')),
 
 ]
 

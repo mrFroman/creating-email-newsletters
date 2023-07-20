@@ -1,19 +1,19 @@
-import json
+
 import logging
 from django.contrib.auth.views import LoginView, LogoutView
-from django.forms import formset_factory
-from django.shortcuts import reverse, redirect
+from django.shortcuts import reverse
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, TemplateView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import UrlsContent, Mainindex, CityMailSend, User, DateMailSend
-from .form import LoginUserForm, RegisterUserForm, UrlsForDate
+from .form import LoginUserForm, RegisterUserForm
 from .services import created_mailing_list
-from rest_framework import generics
+from rest_framework import generics, status, viewsets
 
-from .serializers import UrlsContentSerializer, CityMailSendtSerializer, UserSerializer, DateMailSendSerializer
+from .serializers import UrlsContentSerializer, CityMailSendSerializer, UserSerializer, DateMailSendSerializer, \
+    AllUrlSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -94,6 +94,8 @@ class CreateMail(TemplateView):
         return self.render_to_response(context)
 
 
+
+""" Блок с API для вывода """
 class UrlAPIViews(generics.ListCreateAPIView):
     queryset = UrlsContent.objects.all()
     serializer_class = UrlsContentSerializer
@@ -101,7 +103,7 @@ class UrlAPIViews(generics.ListCreateAPIView):
 
 class CityAPIViews(generics.ListCreateAPIView):
     queryset = CityMailSend.objects.all()
-    serializer_class = CityMailSendtSerializer
+    serializer_class = CityMailSendSerializer
 
 class UserAPIViews(generics.ListCreateAPIView):
     queryset = User.objects.all()
@@ -109,5 +111,21 @@ class UserAPIViews(generics.ListCreateAPIView):
 
 
 class DateAPIViews(generics.ListCreateAPIView):
-    queryset = DateMailSend.objects.order_by('date_create')
+    queryset = DateMailSend.objects.all()
     serializer_class = DateMailSendSerializer
+
+
+class AllUrlsView(generics.ListAPIView):
+    queryset = UrlsContent.objects.all()
+    serializer_class = AllUrlSerializer
+
+
+
+
+
+
+
+    
+
+
+

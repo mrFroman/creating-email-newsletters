@@ -5,13 +5,14 @@ from .models import UrlsContent, DateMailSend, CityMailSend, User
 class UrlsContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = UrlsContent
-        fields = '__all__'
+        fields = ('date_create', 'poster_url', 'name_event', 'rate', 'date_event', 'time_event', 'venue', 'price',
+                  'content_text')
 
 
-class CityMailSendtSerializer(serializers.ModelSerializer):
+class CityMailSendSerializer(serializers.ModelSerializer):
     class Meta:
         model = CityMailSend
-        fields = '__all__'
+        fields = ('id', 'city')
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -21,6 +22,30 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class DateMailSendSerializer(serializers.ModelSerializer):
+    city = CityMailSendSerializer(read_only=True)
+
     class Meta:
         model = DateMailSend
+        fields = ('city', 'date_create')
+
+
+#######################################################################################
+class AllUrlSerializer(serializers.ModelSerializer):
+    url_date = DateMailSendSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = UrlsContent
         fields = '__all__'
+        depth = 1
+
+
+
+
+################## работает но криво ##############################
+# class AllUrlSerializer(serializers.ModelSerializer):
+#     url_date = DateMailSendSerializer(many=True, read_only=True)
+#
+#     class Meta:
+#         model = UrlsContent
+#         fields = '__all__'
+#         depth = 1
